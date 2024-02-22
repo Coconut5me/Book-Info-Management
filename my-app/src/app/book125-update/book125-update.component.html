@@ -1,0 +1,52 @@
+<p>{{errMessage}}</p>
+<table>
+    <tr>
+        <td>Tensach</td>
+        <td>Giaban</td>
+        <td>Mota</td>
+        <td>Anhbia</td>
+        <td>Ngaycapnhat</td>
+        <td>Soluongton</td>
+        <td>MaCD</td>
+        <td>MaNXB</td>
+        <td></td>
+    </tr>
+    <tr>      
+        <td>
+            <input type="text" class="form-control" #name="ngModel" name="Name" id="Name"
+                placeholder="Enter Book Name" [(ngModel)]="book.Name"/>
+        </td>
+        <td>
+            <input type="text" class="form-control" #name="ngModel" name="Price" id="Price"
+                placeholder="Enter Price" [(ngModel)]="book.Price"/>
+        </td>
+        <td>
+            <input type="text" class="form-control" #name="ngModel" name="Description" id="Description"
+                placeholder="Enter Description" [(ngModel)]="book.Description"/>
+        </td>
+        <td>
+            <input type="file" id="fileInput" (change)="onFileSelected($event)" />
+        </td>
+        <td>
+            <input type="text" class="form-control" #name="ngModel" name="UpdateAt" id="UpdateAt" placeholder="0"
+                [(ngModel)]="book.UpdateAt" />
+        </td>
+        <td>
+            <input type="text" class="form-control" #name="ngModel" name="StockQty" id="StockQty"
+                placeholder="0" [(ngModel)]="book.StockQty"/>
+        </td>
+        <td>
+            <input type="text" class="form-control" #name="ngModel" name="CDCode" id="CDCode"
+                placeholder="0" [(ngModel)]="book.CDCode"/>
+        </td>
+        <td>
+            <input type="text" class="form-control" #name="ngModel" name="PublicerCode" id="PublicerCode"
+                placeholder="0" [(ngModel)]="book.PublicerCode"/>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="9">
+            <button (click)="putBook()">Update</button>
+        </td>
+    </tr>
+</table>

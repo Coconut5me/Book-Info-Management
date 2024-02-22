@@ -1,0 +1,14 @@
+<input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload name="image">
+<div class="file-upload">
+    {{fileName || "No file uploaded yet."}}
+    <img *ngIf="uploadedImageUrl" [src]="uploadedImageUrl" alt="Uploaded Image">
+    <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+        Upload
+    </button>
+</div>
+
+<!-- Display the latest uploaded image -->
+<div *ngIf="latestUploadedImageUrl">
+  <h2>Latest Uploaded Image</h2>
+  <img [src]="latestUploadedImageUrl" alt="Latest Uploaded Image">
+</div>

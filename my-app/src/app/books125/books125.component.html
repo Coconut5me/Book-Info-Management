@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="books125.component.css">
+
+{{errMessage}}
+<table>
+    <tr>
+        <th colspan="9" style="font-size: 20px;">QUẢN LÝ THÔNG TIN SÁCH</th>
+    </tr>
+    <tr>
+        <td colspan="9"><a routerLink="/new" routerLinkActive="active">
+                Create New
+            </a></td>
+    </tr>
+    <tr>
+        <td>Tensach</td>
+        <td>Giaban</td>
+        <td>Mota</td>
+        <td>Anhbia</td>
+        <td>Ngaycapnhat</td>
+        <td>Soluongton</td>
+        <td>MaCD</td>
+        <td>MaNXB</td>
+        <td></td>
+    </tr>
+    <tr *ngFor="let book of books125">
+        <td>{{book.Name}}</td>
+        <td>{{book.Price}}</td>
+        <td>{{book.Description}}</td>
+        <td><img src="assets/book125_img/{{book.Avatar}}" width="50px" height="50px"></td>
+        <td>{{book.UpdateAt}}</td>
+        <td>{{book.StockQty}}</td>
+        <td #CDCode>{{book.CDCode}}</td>
+        <td>{{book.PublicerCode}}</td>
+        <td>
+            <button (click)="editBook(book)">Edit</button>
+            <button (click)="showBookDetails(book)">
+                Details
+            </button>
+            <button (click)="deleteBook(book.CDCode)">Delete</button>
+        </td>
+    </tr>
+</table>
+<br>
+<div *ngIf="selectedBook">
+    <p><b>Edit Book</b></p>
+    <form (submit)="updateSelectedBook()">
+      <table>
+        <tr>
+          <td><label for="name">Name:</label></td>
+          <td><input type="text" id="name" [(ngModel)]="selectedBook.Name" name="name"></td>
+        </tr>
+        <tr>
+          <td><label for="price">Price:</label></td>
+          <td><input type="text" id="price" [(ngModel)]="selectedBook.Price" name="price"></td>
+        </tr>
+        <tr>
+          <td><label for="description">Description:</label></td>
+          <td><input type="text" id="description" [(ngModel)]="selectedBook.Description" name="description"></td>
+        </tr>
+        <tr>
+          <td><label for="avatar">Avatar:</label></td>
+          <td><input type="file" id="fileInput" (change)="onFileSelected($event)" /></td>
+        </tr>
+        <tr>
+          <td><label for="updateAt">Update Date:</label></td>
+          <td><input type="text" id="updateAt" [(ngModel)]="selectedBook.UpdateAt" name="updateAt"></td>
+        </tr>
+        <tr>
+          <td><label for="stockQty">Stock Quantity:</label></td>
+          <td><input type="text" id="stockQty" [(ngModel)]="selectedBook.StockQty" name="stockQty"></td>
+        </tr>
+        <!-- Add more rows for additional fields as needed -->
+      </table>
+  
+      <button type="submit">Update</button>
+      <button type="button" (click)="cancelUpdate()">Cancel</button>
+    </form>
+  </div>
+  
+<br>
+
+<table>
+    <tr *ngIf="selectedBookDetails" >
+        <th colspan="2">Book Details</th>
+    </tr>
+    <tr *ngIf="selectedBookDetails">
+        <td>Tensach:</td>
+        <td>{{selectedBookDetails.Name}}</td>
+    </tr>
+    <tr *ngIf="selectedBookDetails">
+        <td>Giaban:</td>
+        <td>{{selectedBookDetails.Price}}</td>
+    </tr>
+    <tr *ngIf="selectedBookDetails">
+        <td>Mota:</td>
+        <td>{{selectedBookDetails.Description}}</td>
+    </tr>
+    <tr *ngIf="selectedBookDetails">
+        <td>Anhbia:</td>
+        <td>
+            <img src="assets/book125_img/{{selectedBookDetails.Avatar}}" width="50px" height="50px">
+        </td>
+    </tr>
+    <tr *ngIf="selectedBookDetails">
+        <td>Ngaycapnhat:</td>
+        <td>{{selectedBookDetails.UpdateAt}}</td>
+    </tr>
+    <tr *ngIf="selectedBookDetails">
+        <td>Soluongton:</td>
+        <td>{{selectedBookDetails.StockQty}}</td>
+    </tr>
+    <tr *ngIf="selectedBookDetails">
+        <td>MaCD:</td>
+        <td>{{selectedBookDetails.CDCode}}</td>
+    </tr>
+    <tr *ngIf="selectedBookDetails">
+        <td>MaNXB:</td>
+        <td>{{selectedBookDetails.PublicerCode}}</td>
+    </tr>
+</table>
